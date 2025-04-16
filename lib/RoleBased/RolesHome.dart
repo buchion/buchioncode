@@ -28,6 +28,7 @@ class RolesHome extends StatelessWidget {
     }
 
     return FutureBuilder<List<Role>>(
+      // future: roleService.getUserRoles(['admin']),
       future: roleService.getUserRoles(user.roleIds),
       builder: (context, snapshot) {
         if (!snapshot.hasData) {
@@ -37,6 +38,10 @@ class RolesHome extends StatelessWidget {
         }
 
         final userRoles = snapshot.data!;
+
+        print(user.roleIds);
+        print(user.roleIds);
+        print(user.roleIds);
 
         return Scaffold(
           appBar: AppBar(
@@ -53,11 +58,13 @@ class RolesHome extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                
                 RoleBasedWidget(
                   userRoles: userRoles,
                   allowedRoles: const ['Admin'],
-                  child: ElevatedButton(
+                  child: 
+                  
+                 
+                  ElevatedButton(
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -66,7 +73,7 @@ class RolesHome extends StatelessWidget {
                         ),
                       );
                     },
-                    child: const Text('Admin Panel'),
+                    child: const Text('VIEW ADMIN PANEL'),
                   ),
                 ),
                 RoleBasedWidget(
@@ -84,7 +91,6 @@ class RolesHome extends StatelessWidget {
                     child: const Text('HR Dashboard'),
                   ),
                 ),
-
                 RoleBasedWidget(
                   userRoles: userRoles,
                   allowedRoles: const ['Finance Manager'],
@@ -100,7 +106,6 @@ class RolesHome extends StatelessWidget {
                     child: const Text('Finance Dashboard'),
                   ),
                 ),
-
                 RoleBasedWidget(
                   userRoles: userRoles,
                   allowedRoles: const ['General Manager'],
@@ -116,7 +121,6 @@ class RolesHome extends StatelessWidget {
                     child: const Text('Manager Dashboard'),
                   ),
                 ),
-
                 PermissionChecker(
                   userRoles: userRoles,
                   permission: 'view_salaries',
@@ -128,14 +132,16 @@ class RolesHome extends StatelessWidget {
                     ),
                   ),
                 ),
-
                 const SizedBox(height: 20),
                 const Text('Your Roles:'),
-
+                
                 Column(
                   children: userRoles
                       .map((role) => ListTile(
-                            title: Text(role.name, style: const TextStyle(color: Colors.black),),
+                            title: Text(
+                              role.name,
+                              style: const TextStyle(color: Colors.black),
+                            ),
                             subtitle: Text(role.permissions.join(', ')),
                           ))
                       .toList(),

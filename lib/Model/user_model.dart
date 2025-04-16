@@ -1,4 +1,4 @@
-class AppUser {
+class  AppUser {
   final String id;
   final String email;
   final List<String> roleIds;
