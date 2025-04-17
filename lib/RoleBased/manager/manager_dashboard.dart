@@ -71,7 +71,7 @@ class ManagerDashboard extends StatelessWidget {
             // Team Management
             RoleBasedWidget(
               userRoles: userRoles,
-              allowedRoles: ['General Manager', 'Senior Manager'],
+              allowedRoles: const ['General Manager', 'Senior Manager'],
               child: Card(
                 margin: const EdgeInsets.only(top: 20),
                 child: Padding(
